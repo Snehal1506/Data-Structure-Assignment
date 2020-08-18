@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Data Structure</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1 class="center">Map Data Structure</h1>
+    <p>A Map is a collection of elements where each element is stored as a <b>Key-Value pair</b>.
+        Map object can hold both objects and primitive values as either key or value, <b>any value can be used
+            as a key </b>, even objects.
+    </p>
+    <p>
+        It stores the key-value pairs in the insertion order. i.e. When we iterate over the map object it returns
+        the
+        key, value pair in the same order as inserted.
+    </p>
+    <h2>Why we need Map if we have Object s</h2>
+    <ol>
+        <li>A Map is similar to Object, but any value can be used as key in maps, but keys in objects are only
+            Strings and Symbols</li>
+        <li>The key—value pairs in Map maintains the insertion order, whereas Object don’t.</li>
+        <li> You can get the size of the Map, but we don’t have a built-in method to get size in Object (but we can do
+            it manually).</li>
+        <li>Maps are iterable, whereas an Object is not iterable by-default.</li>
+        <li>Maps have additional methods not available to normal objects</li>
+    </ol>
+    <p>
+        <strong>Syntax to create map:</strong>
+    </p>
+    <pre>
+        <strong>new Map([it])</strong><br>
+        <strong>Parameter:</strong>
+        
+        it - It is any iterable object whose values are stored as 
+             key, value pair,
+             If the parameter is not specified then a new map is created 
+             is Empty
+        
+        <strong>Returns:</strong>
+        
+        A new Map object
+    </pre>
+    <p>Now lets create Map using the Map object</p>
+    <pre>
+        <code>
+            //Creating a Map
+
+            var map1 = new Map([["firstname", "Snehal"], ["lastname", "Lokhande"], ["class", "BE"]]);
+
+            map1;//{"firstname" => "Snehal", "lastname" => "Lokhande", "class" => "BE"}
+        </code>
+    </pre>
+    <p>
+        <strong>Properties:</strong>
+    </p>
+    <pre>
+        <strong>Map.prototype.size</strong> - It returns the number of elements or the key-value pairs in the map.
+    </pre>
+    <pre>
+        <code>
+            //Size
+
+            map1.size; //3
+        </code>
+    </pre>
+    <p>
+        <strong>Methods:</strong>
+    </p>
+    <ol>
+        <li>
+            <strong>Map.prototype.set()</strong> - It adds the key and value to the Map Object.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.set(k, v);</strong><br>
+                <strong>Parameter:</strong>
+                
+                k - Key of the element to be added to the Map
+                v - value of the element to be added to the Map
+                
+                <strong>Returns:</strong>
+                
+                It returns a Map object
+            </pre>
+            <pre>
+                <code>
+                    //set(key , value) method
+        
+                    map1.set("Branch","IT");
+
+                    map1; // {"firstname" => "Snehal", "lastname" => "Lokhande", "class" => "BE", "Branch" => "IT"}
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.has()</strong> - It return a boolean value depending on whether the specified key is
+            present or not
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.has(k);</strong><br>
+                <strong>Parameter:</strong>
+                
+                k - Key of the element to checked
+                
+                <strong>Returns:</strong>
+                
+                true if the element with the specified key is present 
+                or else returns false.
+            </pre>
+            <pre>
+                <code>
+                    //has(key) method
+        
+                    map1.has("firstname"); // true
+
+                    map1.has("age"); //false
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.get()</strong> - It returns the value of the corresponding key
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.get(k);</strong><br>
+                <strong>Parameter:</strong>
+                
+                k - Key, whose value is to be returned
+                
+                <strong>Returns:</strong>
+                
+                The value associated with the key, if it is present 
+                in Map, otherwise returns undefined
+            </pre>
+            <pre>
+                <code>
+                    //has(key) method
+        
+                    map1.get("firstname"); // Snehal
+
+                    map1.get("age"); // undefined
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.delete()</strong> - It delete’s both the key as well as a value from the map.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.delete(k);</strong><br>
+                <strong>Parameter:</strong>
+                
+                k - Key which is to be deleted from the map 
+                
+                <strong>Returns:</strong>
+                
+                true if the value is found and deleted from 
+                the map otherwise, it returns false
+            </pre>
+            <pre>
+                <code>
+                    //delete(key) method
+        
+                    map1.delete("firstname"); // true
+
+                    map1.delete("age"); // false
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.clear()</strong> - Removes all the elements from the Map object
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.clear();</strong><br>
+                <strong>Parameter:</strong>
+                
+                No parameters
+                
+                <strong>Returns:</strong>
+                
+                undefined
+            </pre>
+            <pre>
+                <code>
+                    //clear method
+        
+                    map1.clear(); // undefined
+
+                    map1; // Map(0) {}
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.entries()</strong> - It returns an iterator object that contains key/value pair for
+            each element present in the Map object.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.entries();</strong><br>
+                <strong>Parameter:</strong>
+                
+                No parameters
+                
+                <strong>Returns:</strong>
+                
+                It returns an iterator object
+            </pre>
+            <pre>
+                <code>
+                    //entries --> returns key value pair
+        
+                    map1.entries(); // MapIterator {"firstname" => "Snehal", "lastname" => "Lokhande", "class" => "BE"}
+
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.keys()</strong> - It returns an iterator object which contains all the keys present in
+            the Map Object.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.keys();</strong><br>
+                <strong>Parameter:</strong>
+                
+                No parameters
+                
+                <strong>Returns:</strong>
+                
+                An iterator object
+            </pre>
+            <pre>
+                <code>
+                    //keys
+        
+                    map1.keys(); // MapIterator {"firstname", "lastname", "class"}
+
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.values()</strong> - It returns an iterator object which contains all the values
+            present in the Map Object.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.values();</strong><br>
+                <strong>Parameter:</strong>
+                
+                No parameters
+                
+                <strong>Returns:</strong>
+                
+                An iterator object
+            </pre>
+            <pre>
+                <code>
+                    //values
+        
+                    map1.values(); // MapIterator {"Snehal", "Lokhande", "BE"}
+
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype.forEach()</strong> - It executes the callback function once for each key/value pair in
+            the Map, in the insertion order.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1.forEach(callback[, thisArgument]);</strong><br>
+                <strong>Parameter:</strong>
+                
+                callback - It is a function which is to be executed for each element of the Map.
+                thisargument - Value to be used as this when executing the callback.
+                
+                <strong>Returns:</strong>
+                
+                undefined
+            </pre>
+            <p>
+                The callback function is provided with three parameters as follows:
+            <ul>
+                <li>the element key</li>
+                <li>the element value</li>
+                <li>the Map object to be traversed</li>
+            </ul>
+            </p>
+            <pre>
+                <code>
+                    //Using forEach
+        
+                    // creating a map 
+                    var map1 = new Map([["firstname", "Snehal"], ["lastname", "Lokhande"], ["class", "BE"]]);
+                            --------------------------------------------------------------------
+                    Declaring a call back function we are using only one parameter value so it will ignore other two . 
+                    function printOne(values) {
+                        console.log(values);
+                    }
+                    console.log("-----one parameter-----");
+                    map1.forEach(printOne);
+                    //-----one parameter-----
+                    //Snehal
+                    //Lokhande
+                    //BE
+                            --------------------------------------------------------------------
+                    Declaring a call back function we are using two parameter value so it will ignore last one
+                    function printTwo(values, key) {
+                        console.log(key + "  " + values);
+                    }
+                    console.log("-----two parameter-----");
+                    map1.forEach(printTwo);
+                    //-----two parameter-----
+                    //firstname  Snehal
+                    //lastname  Lokhande
+                    //class  BE
+                </code>
+            </pre>
+        </li>
+        <li>
+            <strong>Map.prototype[@@iterator]()</strong> - It returns an Map iterator function which is entries() method
+            of Map object by default.
+            <br />
+            <strong>Syntax:</strong>
+            <pre>
+                <strong>map1[Symbol.iterator]</strong><br>
+                <strong>Parameter:</strong>
+                
+                No parameters
+                
+                <strong>Returns:</strong>
+                
+                Returns an map iterator object and it is 
+                entries() by default
+            </pre>
+            <pre>
+                <code>
+                    //Symbol.iterator
+        
+                    var getit = map1[Symbol.iterator](); // MapIterator {"firstname" => "Snehal", "lastname" => "Lokhande", "class" => "BE"}
+
+                    for (var elem of getit)
+                    console.log(elem); 
+                    //it prints
+                    //["firstname", "Snehal"]
+                    //["lastname", "Lokhande"]
+                    //["class", "BE"]
+                </code>
+            </pre>
+        </li>
+    </ol>
+    <h3>You can perform Map operations here...</h3>
+
+    <div class="result"></div>
+    <br />
+    <br />
+    <input type="text" placeholder="Key" class="mapKey" />
+    <input type="text" placeholder="Value" class="mapValue" />
+    <button class="setBtn Btn1">Set</button>
+    <button class="hasBtn Btn1">Has</button>
+    <button class="sizeBtn Btn1">Size</button>
+    <button class="getBtn Btn1">Get</button>
+    <button class="deleteBtn Btn1">Delete</button>
+    <button class="valueBtn Btn1">Value</button>
+    <button class="clearBtn Btn1">Clear</button>
+    <button class="Btn Btn1">Display</button>
+    <h3>Click on the above buttons to perform Map operations</h3>
+    <script src="script.js"></script>
+</body>
+
+</html>
